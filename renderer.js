@@ -37,6 +37,7 @@ img.onload = function(){
 
   let gui_5 = gui.add(CvImg,'gpuGreyScale');
   let gui_6 = gui.add(CvImg,'gpuSepia');
+  let gui_7 = gui.add(CvImg,'gpuNegative');
   /**
   gui.add(CvImg,'datVarAlpha');
   gui.add(CvImg,'datVarRed');

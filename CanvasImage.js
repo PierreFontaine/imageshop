@@ -183,4 +183,26 @@ export class CanvasImage {
     imgData.data.set(buf8);
     this.setData(imgData);
   }
+
+  gpuNegative(){
+    let testPx = new Hexa_pixel(0xff2A92C6D0);
+    console.log(testPx.getValue());
+    console.log(testPx.applyGreyScale());
+
+    let px = new Hexa_pixel();
+    let canvasHeight = this.canvas.height;
+    let canvasWidth = this.canvas.width;
+    let imgData = this.context.getImageData(0,0,canvasWidth,canvasHeight);
+    let data = new Uint32Array(imgData.data.buffer);
+    let buf8 = new Uint8ClampedArray(imgData.data.buffer);
+
+    for (let y = 0; y < canvasHeight; ++y) {
+      for (let x = 0; x < canvasWidth; ++x) {
+        px.setValue(data[y * canvasWidth + x]);
+        data[y * canvasWidth + x] = px.applyNegative();
+      }
+    }
+    imgData.data.set(buf8);
+    this.setData(imgData);
+  }
 };

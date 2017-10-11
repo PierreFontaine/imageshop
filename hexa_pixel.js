@@ -48,4 +48,13 @@ export class Hexa_pixel{
     this.majValue();
     return this.value;
   }
+
+  applyNegative(){
+    this.alpha = 255;
+    this.red = 255 - this.red;
+    this.green = 255 - this.green;
+    this.blue = 255 - this.blue;
+    this.majValue();
+    return this.value;
+  }
 }
