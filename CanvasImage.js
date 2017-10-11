@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 import {GreyScale,Sepia,Negatif,Noise} from './FuncImage.js';
 import {masquage} from './masquage.js';
-
+import {Hexa_pixel} from './Hexa_pixel.js';
 export class CanvasImage {
 
   /**
@@ -140,20 +140,44 @@ export class CanvasImage {
     this.setData(imgData);
   }
 
-  gpuAlphaVar(){
-    console.log("on va modifier du alpha !");
+  gpuGreyScale(){
+    let testPx = new Hexa_pixel(0xff2A92C6D0);
+    console.log(testPx.getValue());
+    console.log(testPx.applyGreyScale());
+
+    let px = new Hexa_pixel();
     let canvasHeight = this.canvas.height;
     let canvasWidth = this.canvas.width;
     let imgData = this.context.getImageData(0,0,canvasWidth,canvasHeight);
     let data = new Uint32Array(imgData.data.buffer);
     let buf8 = new Uint8ClampedArray(imgData.data.buffer);
-    console.log(data);
+
     for (let y = 0; y < canvasHeight; ++y) {
       for (let x = 0; x < canvasWidth; ++x) {
-          let value = data[y * canvasWidth + x];
-          let a = this.alpha << 24;
-          data[y * canvasWidth + x] &= 0x00ffffff;
-          data[y * canvasWidth + x] |= a;
+        px.setValue(data[y * canvasWidth + x]);
+        data[y * canvasWidth + x] = px.applyGreyScale();
+      }
+    }
+    imgData.data.set(buf8);
+    this.setData(imgData);
+  }
+
+  gpuSepia(){
+    let testPx = new Hexa_pixel(0xff2A92C6D0);
+    console.log(testPx.getValue());
+    console.log(testPx.applyGreyScale());
+
+    let px = new Hexa_pixel();
+    let canvasHeight = this.canvas.height;
+    let canvasWidth = this.canvas.width;
+    let imgData = this.context.getImageData(0,0,canvasWidth,canvasHeight);
+    let data = new Uint32Array(imgData.data.buffer);
+    let buf8 = new Uint8ClampedArray(imgData.data.buffer);
+
+    for (let y = 0; y < canvasHeight; ++y) {
+      for (let x = 0; x < canvasWidth; ++x) {
+        px.setValue(data[y * canvasWidth + x]);
+        data[y * canvasWidth + x] = px.applySepia();
       }
     }
     imgData.data.set(buf8);

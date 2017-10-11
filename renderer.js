@@ -22,21 +22,21 @@ img.onload = function(){
   let map = [GreyScale,Sepia,Negatif,Noise];
   let CvImg = new CanvasImage(canvas,img);
 
-  let gui_1 = gui.add(CvImg,'alpha', 0,255).onChange(function(){
+  let gui_1 = gui.add(CvImg,'alpha', 10,255).onChange(function(){
     CvImg.gpuVar(masquage.a);
   });
-  let gui_2 = gui.add(CvImg,'red', 0,255).onChange(function(){
+  let gui_2 = gui.add(CvImg,'red', 10,255).onChange(function(){
     CvImg.gpuVar(masquage.r);
   });
-  let gui_3 = gui.add(CvImg,'green', 0,255).onChange(function(){
+  let gui_3 = gui.add(CvImg,'green', 10,255).onChange(function(){
     CvImg.gpuVar(masquage.g);
   });
-  let gui_4 = gui.add(CvImg,'blue', 0,255).onChange(function(){
+  let gui_4 = gui.add(CvImg,'blue', 10,255).onChange(function(){
     CvImg.gpuVar(masquage.b);
   });
 
-
-
+  let gui_5 = gui.add(CvImg,'gpuGreyScale');
+  let gui_6 = gui.add(CvImg,'gpuSepia');
   /**
   gui.add(CvImg,'datVarAlpha');
   gui.add(CvImg,'datVarRed');
