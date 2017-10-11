@@ -1,0 +1,28 @@
+{
+  "name": "UV_mapping_three.js",
+  "browser": {
+    "Authoring": "./js/Authoring.js",
+    "SoundJS": "./js/SoundJS/soundjs-0.6.2.min.js"
+  },
+  "browserify-shim": {
+    "Authoring": {
+      "exports": "Authoring"
+    },
+    "SoundJS": {
+      "exports": "SoundJS"
+    }
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "dependencies": {
+    "browserify": "^14.4.0",
+    "sweetalert2": "^6.8.0",
+    "three": "^0.87.1"
+  },
+  "devDependencies": {
+    "browserify-shim": "^3.8.14"
+  }
+}
