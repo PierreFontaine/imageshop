@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 import {GreyScale,Sepia,Negatif,Noise} from './FuncImage.js';
 import {masquage} from './masquage.js';
-import {Hexa_pixel} from './Hexa_pixel.js';
+import {Hexa_pixel} from './hexa_pixel.js';
 export class CanvasImage {
 
   /**
