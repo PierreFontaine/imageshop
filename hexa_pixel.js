@@ -41,8 +41,8 @@ export class Hexa_pixel{
   applySepia(){
     let avg = 0.3  * this.red + 0.59 * this.green + 0.11 * this.blue;
     this.alpha = 255;
-    this.red = avg+100;
-    this.green = avg+50;
+    this.red = Math.min(avg+100,255);
+    this.green = Math.min(avg+50,255);
     this.blue = avg;
 
     this.majValue();
